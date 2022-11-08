@@ -1,0 +1,22 @@
+{
+  "Containers": [
+    {
+      "price": 0.2,
+      "category": "copo",
+    },
+    {
+      "price": 0,
+      "category": "taça",
+    },
+    {
+      "price": 1.5,
+      "category": "casquinha",
+    },
+  ],
+  "Flavors": [
+    "morango", 
+  ]
+  "Additional": {
+  }
+}
+
