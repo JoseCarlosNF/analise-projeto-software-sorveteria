@@ -1,42 +1,30 @@
-from dataclasses import dataclass
+from pprint import pprint
 
-# -------- Aplicação do padrão DECORATORS. Uma das categorias do GoF. ----------
-
-# Utilização do decorator `dataclass` para criar uma classe especial, algo como
-# uma struct das linguagens de programação mais clássicas. Com ela nos podemos
-# definir como será a estrutura de um pedido, e quais serão os atribuitos
-# necessários para formar o padrão.
-
-
-@dataclass
-class Product:
-    price: str
-    category: str
-
-
-@dataclass
-class ItemOrder:
-    item: Product
-    flavor: str
-    aditional: bool
-    aditionais: list
-
-
-# A seguir, temos a classe `Order`, que manipula os items de um pedido.
-class Order:
-    def __init__(self, costumer: str, items: list[Product]):
-        self.costumer = costumer
-        self.items = items
-
-    def add_item(self):
-        pass
-
-    def remove_item(self):
-        pass
-
-    def finalize(self):
-        pass
-
+from models.product import Additional, IceCream
+from order import ItemOrder, Order
 
 if __name__ == '__main__':
-    pass
+    copo = IceCream('copo', 0.2)
+    taca = IceCream('taca', 0)
+    casquinha = IceCream('casquinha', 1.5)
+
+    cobertura_chocolate = Additional('cobertura de chocolate', 0.5)
+    cobertura_morango = Additional('cobertura de morango', 0.5)
+    cobertura_caramelo = Additional('cobertura de caramelo', 0.5)
+
+    order = Order(
+        'Joselito',
+        [
+            ItemOrder(
+                casquinha, 'morango', [cobertura_chocolate, cobertura_caramelo]
+            ),
+            ItemOrder(taca, 'cupuaçu', [cobertura_morango]),
+            ItemOrder(copo, 'bacuri', [cobertura_caramelo]),
+        ],
+    )
+
+    print(f'{5*"-":<5}', 'Items do pedido', f'{5*"-":>5}')
+    pprint(order.list)
+
+    print('\n----- Custo total do pedido -----')
+    pprint(f'R$ {order.finalize():.2f}')
