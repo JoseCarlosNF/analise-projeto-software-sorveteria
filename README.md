@@ -28,6 +28,11 @@ E esses elementos, podem conter os adicionais, de maneira que sejam compostos
 pela combinação, valor cobrado no recipiente em questão mais o valor dos
 adicionais.
 
+## UML
+
+![image](https://user-images.githubusercontent.com/38339200/200799005-0fdda487-0637-4824-aa80-b51bb9bb6fc0.png)
+
+
 ## Execução
 
 Ao executar o  `main.py`, teremos a simulação não interativa de um pedido e seus
